@@ -1,0 +1,21 @@
+---
+version: "3"
+
+name: devcontainer-nestjs
+
+# networks:
+#   default:
+#     name: devcontainer-sandbox
+#     external: true
+
+services:
+  app:
+    container_name: devcontainer-app-nestjs
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - dev.env
+    volumes:
+      - ..:/workspace:cached
+    command: /bin/sh -c "while sleep 1000; do :; done"
